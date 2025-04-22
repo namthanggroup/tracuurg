@@ -5,20 +5,88 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tra cứu App</title>
   <style>
+    /* Đặt toàn trang cao full */
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
+      font-family: Arial, sans-serif;
+    }
+    /* Modal overlay */
+    #consentModal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    /* Hộp nội dung Modal */
+    #consentModal .content {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      max-width: 90%;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    #consentModal button {
+      margin-top: 15px;
+      padding: 8px 16px;
+      border: none;
+      background-color: #007bff;
+      color: #fff;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    /* Ẩn iframe ban đầu */
+    #iframeContainer {
+      display: none;
+      width: 100%;
+      height: calc(100% - 40px); /* trừ header nếu có */
     }
     iframe {
       width: 100%;
       height: 100%;
       border: none;
     }
+    /* Tựa đề trang (nếu muốn giữ) */
+    #pageHeader {
+      display: none; /* ẩn khi chưa đồng ý, hoặc set thành block nếu muốn */
+      padding: 10px;
+      background: #f4f4f4;
+      text-align: center;
+      font-size: 1.2em;
+    }
   </style>
 </head>
 <body>
-  <h2>HELLO, XIN CHÀO CÁC BẠN</h2>
-  <iframe src="https://www.appsheet.com/start/366cd2cd-60ba-4cef-a0a8-070ea7c7eec8" allowfullscreen></iframe>
+  <!-- Popup yêu cầu đồng ý -->
+  <div id="consentModal">
+    <div class="content">
+      <h2>ĐĂNG KÝ HỢP ĐỒNG 100% TRÊN APP</h2>
+      <p>TỪ NGÀY 21/04/2025, TÀI XẾ ĐĂNG KÝ HỢP ĐỒNG THÔNG QUA APP 100%, A/C GỌI TỔNG ĐÀI SẼ KHÔNG ĐƯỢC GHI NHẬN.</p>
+      <button id="consentButton">Đọc xong bấm OK nha.</button>
+    </div>
+  </div>
+
+  <!-- Container iframe -->
+  <div id="iframeContainer">
+    <iframe src="https://www.appsheet.com/start/366cd2cd-60ba-4cef-a0a8-070ea7c7eec8" allowfullscreen></iframe>
+  </div>
+
+  <script>
+    document.getElementById('consentButton').addEventListener('click', function() {
+      // Ẩn modal
+      document.getElementById('consentModal').style.display = 'none';
+      // Hiện header & iframe
+      document.getElementById('pageHeader').style.display = 'block';
+      document.getElementById('iframeContainer').style.display = 'block';
+    });
+  </script>
 </body>
 </html>
