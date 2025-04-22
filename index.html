@@ -40,7 +40,7 @@
       border-radius: 4px;
       cursor: pointer;
     }
-    /* Iframe container, hidden until consent */
+    /* Iframe container */
     #iframeContainer {
       display: none;
       width: 100%;
@@ -54,30 +54,34 @@
   </style>
 </head>
 <body>
-  <!-- Consent modal -->
+  <!-- Popup consent -->
   <div id="consentModal">
     <div class="content">
       <h2>Xin chào!</h2>
-      <p>Vui lòng xác nhận để truy cập nội dung.</p>
+      <p>Vui lòng bấm OK để truy cập nội dung.</p>
       <button id="consentButton">OK, tiếp tục</button>
     </div>
   </div>
 
-  <!-- Embedded iframe -->
+  <!-- Iframe container (ẩn) -->
   <div id="iframeContainer">
-    <iframe id="embeddedFrame" src="https://www.appsheet.com/embed/366cd2cd-60ba-4cef-a0a8-070ea7c7eec8?embed=true" allowfullscreen></iframe>
+    <!-- src để trống, thực hiện gán sau khi đồng ý -->
+    <iframe id="embeddedFrame" data-src="https://www.appsheet.com/embed/366cd2cd-60ba-4cef-a0a8-070ea7c7eec8?embed=true" src="" allowfullscreen></iframe>
   </div>
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       var btn = document.getElementById('consentButton');
+      var modal = document.getElementById('consentModal');
+      var container = document.getElementById('iframeContainer');
+      var frame = document.getElementById('embeddedFrame');
       btn.addEventListener('click', function() {
-        console.log('Consent OK clicked');
-        var modal = document.getElementById('consentModal');
-        var container = document.getElementById('iframeContainer');
         modal.style.display = 'none';
         container.style.display = 'block';
-        console.log('Iframe container visible:', container.style.display);
+        // Gán src để load iframe sau khi user đồng ý
+        if (!frame.src) {
+          frame.src = frame.getAttribute('data-src');
+        }
       });
     });
   </script>
