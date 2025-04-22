@@ -11,7 +11,7 @@
       height: 100%;
       font-family: Arial, sans-serif;
     }
-    /* Modal overlay */
+    /* Modal overlay hiển thị trên cùng */
     #consentModal {
       position: fixed;
       top: 0;
@@ -40,11 +40,13 @@
       border-radius: 4px;
       cursor: pointer;
     }
-    /* Iframe container */
+    /* Iframe luôn load nhưng ẩn bằng visibility */
     #iframeContainer {
-      display: none;
+      visibility: hidden; /* ẩn nhìn thấy nhưng vẫn load */
       width: 100%;
       height: 100%;
+      position: relative;
+      z-index: 0;
     }
     iframe {
       width: 100%;
@@ -63,10 +65,9 @@
     </div>
   </div>
 
-  <!-- Iframe container (ẩn) -->
+  <!-- Iframe container (luôn load) -->
   <div id="iframeContainer">
-    <!-- src để trống, thực hiện gán sau khi đồng ý -->
-     <iframe src="https://www.appsheet.com/start/366cd2cd-60ba-4cef-a0a8-070ea7c7eec8" allowfullscreen></iframe>  
+    <iframe src="https://www.appsheet.com/embed/366cd2cd-60ba-4cef-a0a8-070ea7c7eec8?embed=true" allowfullscreen></iframe>
   </div>
 
   <script>
@@ -74,14 +75,10 @@
       var btn = document.getElementById('consentButton');
       var modal = document.getElementById('consentModal');
       var container = document.getElementById('iframeContainer');
-      var frame = document.getElementById('embeddedFrame');
       btn.addEventListener('click', function() {
+        // ẩn popup để lộ iframe đã load sẵn
         modal.style.display = 'none';
-        container.style.display = 'block';
-        // Gán src để load iframe sau khi user đồng ý
-        if (!frame.src) {
-          frame.src = frame.getAttribute('data-src');
-        }
+        container.style.visibility = 'visible';
       });
     });
   </script>
