@@ -9,75 +9,16 @@
       margin: 0;
       padding: 0;
       height: 100%;
-      font-family: Arial, sans-serif;
     }
-    /* Iframe luôn hiển thị */
-    #iframeContainer {
-      width: 100%;
-      height: 100%;
-      position: relative;
-      z-index: 0;
-    }
-    #iframeContainer iframe {
+    iframe {
       width: 100%;
       height: 100%;
       border: none;
-    }
-    /* Popup modal nằm trên iframe */
-    #consentModal {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-    }
-    #consentModal .content {
-      background: #fff;
-      padding: 20px;
-      border-radius: 8px;
-      max-width: 90%;
-      text-align: center;
-    }
-    #consentModal button {
-      margin-top: 15px;
-      padding: 8px 16px;
-      border: none;
-      background-color: #007bff;
-      color: #fff;
-      border-radius: 4px;
-      cursor: pointer;
     }
   </style>
 </head>
 <body>
-  <!-- Iframe container hiển thị ngay -->
-  <div id="iframeContainer">
-    <iframe src="https://www.appsheet.com/embed/366cd2cd-60ba-4cef-a0a8-070ea7c7eec8?embed=true" allowfullscreen></iframe>
-  </div>
-
-  <!-- Popup modal hiển thị ngay và che lên iframe -->
-  <div id="consentModal">
-    <div class="content">
-      <h2>Xin chào!</h2>
-      <p>Vui lòng bấm OK để truy cập nội dung.</p>
-      <button id="consentButton">OK, tiếp tục</button>
-    </div>
-  </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var btn = document.getElementById('consentButton');
-      var modal = document.getElementById('consentModal');
-      btn.addEventListener('click', function() {
-        // ẩn popup để người dùng nhìn thấy iframe
-        modal.style.display = 'none';
-      });
-    });
-  </script>
+  <h2>TRA CỨU HỢP ĐỒNG - RẠCH GIÁ</h2>
+  <iframe src="https://www.appsheet.com/start/366cd2cd-60ba-4cef-a0a8-070ea7c7eec8" allowfullscreen></iframe>
 </body>
 </html>
