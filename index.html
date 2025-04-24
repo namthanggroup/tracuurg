@@ -11,7 +11,19 @@
       height: 100%;
       font-family: Arial, sans-serif;
     }
-    /* Modal overlay hiển thị trên cùng */
+    /* Iframe luôn hiển thị */
+    #iframeContainer {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      z-index: 0;
+    }
+    #iframeContainer iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    /* Popup modal nằm trên iframe */
     #consentModal {
       position: fixed;
       top: 0;
@@ -40,23 +52,15 @@
       border-radius: 4px;
       cursor: pointer;
     }
-    /* Iframe luôn load nhưng ẩn bằng visibility */
-    #iframeContainer {
-      visibility: hidden; /* ẩn nhìn thấy nhưng vẫn load */
-      width: 100%;
-      height: 100%;
-      position: relative;
-      z-index: 0;
-    }
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
   </style>
 </head>
 <body>
-  <!-- Popup consent -->
+  <!-- Iframe container hiển thị ngay -->
+  <div id="iframeContainer">
+    <iframe src="https://www.appsheet.com/embed/366cd2cd-60ba-4cef-a0a8-070ea7c7eec8?embed=true" allowfullscreen></iframe>
+  </div>
+
+  <!-- Popup modal hiển thị ngay và che lên iframe -->
   <div id="consentModal">
     <div class="content">
       <h2>Xin chào!</h2>
@@ -65,20 +69,13 @@
     </div>
   </div>
 
-  <!-- Iframe container (luôn load) -->
-  <div id="iframeContainer">
-    <iframe src="https://www.appsheet.com/embed/366cd2cd-60ba-4cef-a0a8-070ea7c7eec8?embed=true" allowfullscreen></iframe>
-  </div>
-
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       var btn = document.getElementById('consentButton');
       var modal = document.getElementById('consentModal');
-      var container = document.getElementById('iframeContainer');
       btn.addEventListener('click', function() {
-        // ẩn popup để lộ iframe đã load sẵn
+        // ẩn popup để người dùng nhìn thấy iframe
         modal.style.display = 'none';
-        container.style.visibility = 'visible';
       });
     });
   </script>
