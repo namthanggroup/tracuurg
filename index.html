@@ -4,9 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tra cứu hợp đồng - Rạch Giá</title>
-    <!-- 🚫 TẮT SEO (Google, Bing, v.v. không index hoặc follow link) -->
-  <meta name="robots" content="noindex, nofollow">
-  <meta name="googlebot" content="noindex, nofollow">
   <style>
     body { 
       margin: 0; padding: 20px; height: 100vh;
@@ -26,7 +23,7 @@
       animation: fadeInDown 1s ease forwards;
     }
 
-    h1 {
+    h2 {
       color: #2c3e50;
       font-size: 22px;
       margin-bottom: 10px;
@@ -41,6 +38,14 @@
       animation: fadeIn 2s ease forwards;
     }
 
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: 90%;
+      max-width: 300px;
+    }
+
     .button {
       background-color: #7CFC00;
       color: white;
@@ -49,10 +54,9 @@
       border: none;
       border-radius: 12px;
       text-decoration: none;
-      width: 90%;
-      max-width: 300px;
       transition: background 0.3s, transform 0.2s;
       animation: fadeInUp 2.5s ease forwards;
+      cursor: pointer;
     }
 
     .button:hover {
@@ -75,14 +79,19 @@
       100% { opacity: 1; transform: translateY(0); }
     }
   </style>
+
   <script>
-    function goToApp() {
-      window.location.href = "https://www.appsheet.com/start/86fb4395-bfa4-4c7d-9322-78d1bc264342";
+    function goToServer1() {
+      window.location.href = "https://www.appsheet.com/start/88829c89-5862-46be-b7fe-2cd26031a861";
+    }
+
+    function goToServer2() {
+      window.location.href = "https://www.appsheet.com/start/f7b33b2f-268d-4ac7-8fcb-824d6786cf03"; // Thay link Appsheet thứ 2 vào đây
     }
   </script>
 </head>
-<body>
 
+<body>
   <!-- Logo -->
   <img src="logo.png" alt="Logo Nam Thắng" class="logo">
 
@@ -90,12 +99,15 @@
   <h2>Tra cứu hợp đồng - Rạch Giá</h2>
 
   <!-- Thông báo -->
-  	<h2 style="color:red"></h2>
+  <div class="message">
+    Hãy chọn máy chủ bên dưới để truy cập ứng dụng.<br>
+    Khi tạo hợp đồng nhớ kiểm tra đầy đủ thông tin trước khi bấm lưu.
+  </div>
 
-  <div class="message">Hãy bấm vào nút "Truy cập Ứng dụng" bên dưới để tiếp tục.<br>HÃY CHUNG TAY ĐÓNG GÓP VỊ TRÍ VÁ VỎ, SỬA CHỮA XE ĐỂ HỖ TRỢ CÁC TÀI XẾ</br></div>
-
-  <!-- Nút truy cập -->
-  <button class="button" onclick="goToApp()">Truy cập Ứng dụng</button>
-
+  <!-- Hai nút truy cập -->
+  <div class="button-container">
+    <button class="button" onclick="goToServer1()">Máy chủ 1</button>
+    <button class="button" onclick="goToServer2()">Máy chủ 2</button>
+  </div>
 </body>
 </html>
